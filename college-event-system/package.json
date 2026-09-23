@@ -1,0 +1,17 @@
+{
+  "name": "accurate-college-event-system",
+  "version": "1.0.0",
+  "description": "College Event Registration System for Accurate Group of Institutions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "college",
+    "event-registration",
+    "campus-fest",
+    "accurate-institute"
+  ],
+  "author": "College Mini Project Team",
+  "license": "ISC"
+}

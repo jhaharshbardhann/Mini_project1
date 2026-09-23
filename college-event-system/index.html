@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accurate Group of Institutions | College Event Registration</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Announcement Strip -->
+    <div class="top-bar">
+        <div class="college-location">
+            <span>📍</span> Knowledge Park III, Greater Noida, UP | Approved by AICTE & AKTU
+        </div>
+        <div class="tagline">
+            Annual Campus Fest & Tech Odyssey 2026
+        </div>
+    </div>
+
+    <!-- Main College Navigation Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="brand">
+                <div class="brand-logo-badge">🎓</div>
+                <div class="brand-text">
+                    <h1>Accurate Group of Institutions</h1>
+                    <p>College Event Registration & Discovery Portal</p>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html" class="active">🏠 Home</a>
+                <a href="#events">📅 Events</a>
+                <a href="status.html">🔍 Check Pass</a>
+                <a href="admin.html">⚙️ Organizer Portal</a>
+                <a href="registration.html" class="cta-nav">✍️ Register Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-badge">⚡ Campus Odyssey 2026</span>
+            <h2>Discover, Compete & Showcase Your Talent</h2>
+            <p class="lead">Centralized hub for all college competitions, cultural fests, esports tournaments & hackathons. Discover events and register with an instant digital entry pass.</p>
+            <div class="hero-actions">
+                <a href="#events" class="btn btn-accent">Explore Events 👇</a>
+                <a href="registration.html" class="btn btn-outline">Instant Registration 🚀</a>
+                <a href="status.html" class="btn btn-outline">Find My Pass 🎫</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fast Stats Ribbon -->
+    <div class="container">
+        <div class="stats-ribbon">
+            <div class="stat-item">
+                <h3>6+</h3>
+                <p>Mega Campus Events</p>
+            </div>
+            <div class="stat-item">
+                <h3>₹85,000+</h3>
+                <p>Total Cash Prize Pool</p>
+            </div>
+            <div class="stat-item">
+                <h3>1,500+</h3>
+                <p>Participating Students</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Free Online Entry Pass</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Events Section -->
+    <main class="container" id="events">
+        <div class="section-header">
+            <h2>Upcoming Campus Events</h2>
+            <p>Select your favorite event to view full guidelines or register directly</p>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="controls-container">
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">All Events</button>
+                <button class="filter-btn" data-category="technical">💻 Technical</button>
+                <button class="filter-btn" data-category="gaming">🎮 Gaming & Esports</button>
+                <button class="filter-btn" data-category="cultural">🎤 Cultural</button>
+                <button class="filter-btn" data-category="management">🧠 Management</button>
+            </div>
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="eventSearchInput" placeholder="Search events, games, coding...">
+            </div>
+        </div>
+
+        <!-- Events Grid (Rendered dynamically by app.js) -->
+        <div class="events-grid" id="eventsGrid">
+            <!-- Dynamic Event Cards will be loaded here -->
+        </div>
+    </main>
+
+    <!-- Event Details Modal Dialog -->
+    <div class="modal-overlay" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Event Details</h3>
+                <button class="modal-close" onclick="closeEventDetails()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content populated dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-dark btn-sm" onclick="closeEventDetails()">Close</button>
+                <button class="btn btn-primary btn-sm" id="modalRegisterBtn">Register for this Event</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>🎓 Accurate Group of Institutions</h4>
+                <p>Empowering minds through innovation, competition, and leadership. One centralized platform for all academic, technical, gaming, and cultural events.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">📍 49, Knowledge Park III, Greater Noida, Uttar Pradesh 201306</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#events">Upcoming Events</a></li>
+                    <li><a href="registration.html">Online Registration</a></li>
+                    <li><a href="status.html">Check Pass Status</a></li>
+                    <li><a href="admin.html">Organizer Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Student Helpdesk</h4>
+                <p style="font-size: 0.9rem;">
+                    <strong>Email:</strong> events@accurate.in<br>
+                    <strong>Phone:</strong> +91 120 2328214<br>
+                    <strong>Helpline:</strong> 1800-180-3515
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Accurate Group of Institutions College | College Event Registration System Mini Project
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

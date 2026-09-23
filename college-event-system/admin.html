@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizer & Admin Dashboard | Accurate Group of Institutions</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Announcement Strip -->
+    <div class="top-bar">
+        <div class="college-location">
+            <span>🛡️</span> Accurate Group of Institutions | Administration & Event Coordinator Portal
+        </div>
+        <div class="tagline">
+            Confidential Organizer Dashboard 2026
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="brand">
+                <div class="brand-logo-badge">🎓</div>
+                <div class="brand-text">
+                    <h1>Accurate Group of Institutions</h1>
+                    <p>Event Administration & Participant Management</p>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">🏠 Home</a>
+                <a href="registration.html">✍️ Register</a>
+                <a href="status.html">🔍 Check Pass</a>
+                <a href="admin.html" class="active">⚙️ Organizer Portal</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 30px;">
+
+        <!-- Simple Auth Section -->
+        <div id="adminAuthSection" class="form-container" style="max-width: 480px; margin: 60px auto; text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 10px;">🔐</div>
+            <h2>Organizer Access Portal</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Enter organizer passcode to view participant rosters and manage events.</p>
+            
+            <div class="form-group" style="text-align: left;">
+                <label for="adminPasswordInput">Organizer Passcode</label>
+                <input type="password" id="adminPasswordInput" placeholder="Enter 'admin123' (Default Demo Passcode)">
+                <span class="input-hint">Default demo passcode: <code>admin123</code> (or leave empty & click Unlock)</span>
+            </div>
+
+            <button id="adminLoginBtn" class="btn btn-primary btn-block" style="margin-top: 15px;">
+                Unlock Dashboard
+            </button>
+        </div>
+
+        <!-- Main Dashboard Section (shown after login) -->
+        <div id="adminDashboardSection" style="display: none;">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+                <div>
+                    <h2 style="font-size: 2rem; color: var(--primary-dark); margin: 0;">Campus Event Control Center</h2>
+                    <p style="color: var(--text-muted); margin: 4px 0 0 0;">Manage registrations, track participation metrics, and publish events.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-accent btn-sm" onclick="exportToCSV()">
+                        📥 Export to CSV / Excel
+                    </button>
+                    <button class="btn btn-outline-dark btn-sm" onclick="resetAllData()">
+                        🔄 Reset Demo Data
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <h4>Total Registrations</h4>
+                    <div class="number" id="statTotalRegs">0</div>
+                </div>
+                <div class="admin-stat-card success">
+                    <h4>Active Events</h4>
+                    <div class="number" id="statTotalEvents">0</div>
+                </div>
+                <div class="admin-stat-card accent">
+                    <h4>Most Popular Event</h4>
+                    <div class="number" id="statPopularEvent" style="font-size: 1.25rem; font-weight: 700; margin-top: 6px;">-</div>
+                </div>
+                <div class="admin-stat-card purple">
+                    <h4>Attendance Status</h4>
+                    <div class="number" style="font-size: 1.25rem; color: #7c3aed; margin-top: 6px;">Live & Syncing</div>
+                </div>
+            </div>
+
+            <!-- Participants Management Table -->
+            <div class="table-card">
+                <div class="table-toolbar">
+                    <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                        <h3 style="margin: 0; font-size: 1.2rem; color: var(--primary);">📋 Participant Roster</h3>
+                        <span id="tableCountDisplay" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;"></span>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <select id="adminEventFilter" style="padding: 8px 12px; font-size: 0.88rem;">
+                            <!-- Populated dynamically -->
+                        </select>
+                        <input type="text" id="adminSearchInput" placeholder="Search student name, roll..." style="padding: 8px 14px; font-size: 0.88rem; min-width: 220px;">
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Registration ID</th>
+                                <th>Student Name & Email</th>
+                                <th>Roll No</th>
+                                <th>Branch / Year</th>
+                                <th>Registered Event</th>
+                                <th>Format</th>
+                                <th>Phone</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="participantsTableBody">
+                            <!-- Populated dynamically via admin.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Add New Campus Event Section -->
+            <div class="form-container" style="max-width: 100%; margin: 30px 0 60px;">
+                <div class="form-header" style="text-align: left;">
+                    <h3>➕ Publish a New Campus Event</h3>
+                    <p>New events added here will immediately appear on the Homepage and Registration dropdown.</p>
+                </div>
+
+                <form id="addEventForm">
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="newEventTitle">Event Title <span class="required">*</span></label>
+                            <input type="text" id="newEventTitle" placeholder="e.g. 🎮 BGMI Campus Clash" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newEventCategory">Category <span class="required">*</span></label>
+                            <select id="newEventCategory" required>
+                                <option value="technical">💻 Technical / Coding</option>
+                                <option value="gaming">🎮 Gaming & Esports</option>
+                                <option value="cultural">🎤 Cultural / Arts</option>
+                                <option value="management">🧠 Management & Quiz</option>
+                                <option value="sports">⚽ Sports / Athletics</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="newEventDate">Date <span class="required">*</span></label>
+                            <input type="text" id="newEventDate" placeholder="e.g. 29 September 2026" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newEventTime">Time</label>
+                            <input type="text" id="newEventTime" placeholder="e.g. 11:00 AM - 03:00 PM">
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="newEventVenue">Venue <span class="required">*</span></label>
+                            <input type="text" id="newEventVenue" placeholder="e.g. Main Auditorium / Lab 5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newEventPrize">Cash Prize / Awards</label>
+                            <input type="text" id="newEventPrize" placeholder="e.g. ₹15,000 + Trophy">
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="newEventTeamSize">Participation Format</label>
+                            <input type="text" id="newEventTeamSize" placeholder="e.g. Solo or Squad (4 members)">
+                        </div>
+                        <div class="form-group">
+                            <label for="newEventCoordinator">Coordinator Name & Contact</label>
+                            <input type="text" id="newEventCoordinator" placeholder="e.g. Prof. Kumar | 9876543210">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newEventDesc">Brief Description</label>
+                        <textarea id="newEventDesc" rows="2" placeholder="Explain the event objective, rounds, and eligibility..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newEventRules">Event Rules (one rule per line)</label>
+                        <textarea id="newEventRules" rows="3" placeholder="Carry valid student ID card&#10;No emulators or hacks allowed&#10;Report 15 mins before time"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        🚀 Publish Event to Campus Hub
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            © 2026 Accurate Group of Institutions College | Confidential Event Administration
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

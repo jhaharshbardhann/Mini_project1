@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration | Accurate Group of Institutions</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Announcement Strip -->
+    <div class="top-bar">
+        <div class="college-location">
+            <span>📍</span> Knowledge Park III, Greater Noida | Accurate Group of Institutions
+        </div>
+        <div class="tagline">
+            Official Online Student Registration Portal 2026
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="brand">
+                <div class="brand-logo-badge">🎓</div>
+                <div class="brand-text">
+                    <h1>Accurate Group of Institutions</h1>
+                    <p>College Event Registration Portal</p>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">🏠 Home</a>
+                <a href="index.html#events">📅 Events</a>
+                <a href="registration.html" class="active">✍️ Register</a>
+                <a href="status.html">🔍 Check Pass</a>
+                <a href="admin.html">⚙️ Organizer Portal</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Event Registration Form</h2>
+                <p>Fill out the details below to register and generate your official digital event pass</p>
+            </div>
+
+            <form id="registrationForm">
+                <!-- Event Selection -->
+                <div class="form-group">
+                    <label for="event">Select Campus Event <span class="required">*</span></label>
+                    <select id="event" name="event" required>
+                        <!-- Populated dynamically via app.js -->
+                    </select>
+                    <span class="input-hint">Select the competition or activity you wish to participate in.</span>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="name">Student Full Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="e.g. Rahul Sharma" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="roll">Roll Number / Student ID <span class="required">*</span></label>
+                        <input type="text" id="roll" name="roll" placeholder="e.g. 230101045" required>
+                    </div>
+                </div>
+
+                <!-- Academic Info -->
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="branch">Department / Branch <span class="required">*</span></label>
+                        <select id="branch" name="branch" required>
+                            <option value="">-- Select Your Branch --</option>
+                            <option value="Computer Science & Engineering (CSE)">Computer Science & Engg (CSE)</option>
+                            <option value="Artificial Intelligence & ML (AI/ML)">AI & Machine Learning (AI/ML)</option>
+                            <option value="Information Technology (IT)">Information Technology (IT)</option>
+                            <option value="Electronics & Communication (ECE)">Electronics & Comm (ECE)</option>
+                            <option value="Mechanical Engineering (ME)">Mechanical Engineering (ME)</option>
+                            <option value="BCA / MCA">BCA / MCA</option>
+                            <option value="Management / MBA / BBA">Management (MBA / BBA)</option>
+                            <option value="Pharmacy (B.Pharm)">Pharmacy (B.Pharm / D.Pharm)</option>
+                            <option value="Other Stream">Other Stream</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Year of Study <span class="required">*</span></label>
+                        <select id="year" name="year" required>
+                            <option value="">-- Select Academic Year --</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                            <option value="Postgraduate">Postgraduate</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="email">College / Personal Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="name@domain.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">WhatsApp / Contact Number <span class="required">*</span></label>
+                        <input type="tel" id="mobile" name="mobile" placeholder="10-digit mobile number" maxlength="10" required>
+                        <span class="input-hint">For event updates, slot timings, and room allocations.</span>
+                    </div>
+                </div>
+
+                <!-- Participation Format -->
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="participationType">Participation Mode</label>
+                        <select id="participationType" name="participationType">
+                            <option value="Solo">Solo Participant</option>
+                            <option value="Team">Team / Squad (Esports, Hackathon, Group Dance)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Conditional Team Details -->
+                <div class="form-group" id="teamMembersGroup" style="display: none;">
+                    <label for="teamDetails">Team Name & Member Details</label>
+                    <textarea id="teamDetails" name="teamDetails" rows="3" placeholder="Team Name: e.g. Team Accurate Warriors&#10;Member 1: Name (Roll No)&#10;Member 2: Name (Roll No)&#10;Member 3: Name (Roll No)"></textarea>
+                    <span class="input-hint">Provide team name and roll numbers of your team members.</span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block" style="font-size: 1.1rem; padding: 14px;">
+                    ✅ Complete Registration & Generate Pass
+                </button>
+            </form>
+
+            <!-- Registration Result / Pass Display Area -->
+            <div id="result"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>🎓 Accurate Group of Institutions</h4>
+                <p>Knowledge Park III, Greater Noida, Uttar Pradesh 201306. Empowering students with cutting-edge academic and cultural excellence.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Campus Home</a></li>
+                    <li><a href="index.html#events">Event Catalog</a></li>
+                    <li><a href="status.html">Check Pass / ID Status</a></li>
+                    <li><a href="admin.html">Organizer Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support & Helpline</h4>
+                <p>Have an issue with registration? Reach out to student support at <strong>events@accurate.in</strong> or call <strong>+91 120 2328214</strong>.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Accurate Group of Institutions College | All Rights Reserved
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Status & Pass Lookup | Accurate Group of Institutions</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Announcement Strip -->
+    <div class="top-bar">
+        <div class="college-location">
+            <span>📍</span> Accurate Group of Institutions | Knowledge Park III, Greater Noida
+        </div>
+        <div class="tagline">
+            Student Entry Pass Verification Portal
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="brand">
+                <div class="brand-logo-badge">🎓</div>
+                <div class="brand-text">
+                    <h1>Accurate Group of Institutions</h1>
+                    <p>Student Pass Lookup & Status Verification</p>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">🏠 Home</a>
+                <a href="index.html#events">📅 Events</a>
+                <a href="registration.html">✍️ Register</a>
+                <a href="status.html" class="active">🔍 Check Pass</a>
+                <a href="admin.html">⚙️ Organizer Portal</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="form-container" style="max-width: 680px;">
+            <div class="form-header">
+                <h2>🔍 Check Registration & Download Pass</h2>
+                <p>Already registered? Enter your College Roll Number or Registration ID to view and print your entry pass.</p>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-bottom: 25px;">
+                <input type="text" id="statusQueryInput" placeholder="Enter Registration ID (e.g. AGI-2026-...) or Roll No" style="flex: 1; font-size: 1rem;">
+                <button id="searchStatusBtn" class="btn btn-primary">
+                    Search Pass
+                </button>
+            </div>
+
+            <div style="background: #f1f5f9; padding: 14px; border-radius: 8px; font-size: 0.88rem; color: #475569;">
+                💡 <strong>Tip:</strong> If you registered earlier on this browser, your passes are automatically saved. You can also search by your 10-digit registered mobile number.
+            </div>
+
+            <!-- Result passes container -->
+            <div id="statusResult"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>🎓 Accurate Group of Institutions</h4>
+                <p>Knowledge Park III, Greater Noida. Official campus event management and digital pass system.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="registration.html">Register for New Event</a></li>
+                    <li><a href="admin.html">Admin Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Event Desk</h4>
+                <p>Contact the event organizing committee if your registration is not found: <strong>events@accurate.in</strong></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Accurate Group of Institutions College | All Rights Reserved
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
